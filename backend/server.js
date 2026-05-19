@@ -4,6 +4,7 @@ import "dotenv/config"
 
 import { clerkMiddleware } from '@clerk/express'
 import { connectDB } from "./config/db.js"
+import doctorRouter from "./routes/doctorRoute.js"
 
 const app = express()
 const port = 4000
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ limit: "20mb", extended: true }))
 connectDB()
 
 // Routes
+app.use("/api/doctors", doctorRouter)
 
 app.get("/", ((req, res) => {
   res.send("API WORKING")
@@ -25,5 +27,4 @@ app.get("/", ((req, res) => {
 
 app.listen(port, () => {
   console.log(`Server Started on http://localhost:${port}`);
-  
 })

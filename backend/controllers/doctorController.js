@@ -118,7 +118,7 @@ export async function createDoctor(req, res) {
     }
 
     const token = jwt.sign({
-      id: doc.toString(),
+      id: doc._id.toString(),
       email: doc.email,
       role: "doctor"
     }, secret, { expiresIn: "7d" })
@@ -379,7 +379,7 @@ export async function doctorLogin(req, res) {
     })
 
     const token = jwt.sign({
-      id: doc.toString(),
+      id: doc._id.toString(),
       email: doc.email,
       role: "doctor"
     }, secret, { expiresIn: "7d" })
@@ -388,7 +388,7 @@ export async function doctorLogin(req, res) {
     delete out.password
     return res.json({ success: true, token, data: out })
   } catch (error) {
-    console.error("login error:", err);
+    console.error("login error:", error);
     return res.status(500).json({ success: false, message: "Server error" });
   }
 }
