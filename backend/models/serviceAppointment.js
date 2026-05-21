@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 const serviceAppointmentSchema = new mongoose.Schema({
   createdBy: {
@@ -118,7 +118,7 @@ const serviceAppointmentSchema = new mongoose.Schema({
     sessionId: {
       type: String,
       default: "",
-      index: true,
+      // index: true,
     },
 
     meta: {
@@ -131,7 +131,7 @@ const serviceAppointmentSchema = new mongoose.Schema({
 }
 )
 
-serviceAppointmentSchema.index({ date: 1, stauts: 1 })
+serviceAppointmentSchema.index({ date: 1, status: 1 })
 serviceAppointmentSchema.index({ serviceId: 1 })
 serviceAppointmentSchema.index({ "payment.sessionId": 1 })
 
