@@ -338,7 +338,7 @@ export const getServiceAppointments = async (req, res) => {
       .populate("serviceId", "name image imageUrl imageSmall")
       .sort({ createdAt: -1 })
       .skip(skip).limit(limit).lean()
-    const total = await ServiceAppointment.countDocument(filter)
+    const total = await ServiceAppointment.countDocuments(filter)
     return res.json({
       success: true,
       appointments,
