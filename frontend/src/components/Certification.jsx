@@ -54,7 +54,7 @@ const Certification = () => {
         <div className={certificationStyles.topLine}></div>
         <div className={certificationStyles.gridContainer}>
           <div className={certificationStyles.grid}>
-            {Array.from({ length: 144 }).map((i) => (
+            {Array.from({ length: 144 }).map((_, i) => (
               <div key={i} className={certificationStyles.gridCell}></div>
             ))}
           </div>
