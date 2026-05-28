@@ -6,7 +6,6 @@ const appointmentRouter = express.Router()
 
 const requireAuth = (req, res, next) => {
   const auth = getAuth(req)
-  console.log("Auth state:", auth)
   if (!auth.userId) {
     return res.status(401).json({ success: false, message: "Unauthorized" })
   }

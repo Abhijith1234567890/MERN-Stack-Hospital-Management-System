@@ -160,7 +160,6 @@ export default function DashboardPage({ apiBase }) {
         doctorId,
       )}`;
       const url = `${basePath}`;
-      console.log(url);
 
       const res = await fetch(url);
 

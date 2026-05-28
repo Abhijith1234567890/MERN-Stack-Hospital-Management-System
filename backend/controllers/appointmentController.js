@@ -75,47 +75,12 @@ export const getAppointments = async (req, res) => {
     })
 
   } catch (error) {
-    console.log("GetAppointment Error:", error);
     return res.status(500).json({
       success: false,
       message: "Server Error"
     })
   }
 }
-
-// to getAppointment By Patient
-// export const getAppointmentByPatient = async (req, res) => {
-//   try {
-//     const queryCreatedBy = req.query.createdBy || null
-//     const clerkUserId = req.auth?.userId || null
-//     const resolvedCreatedBy = queryCreatedBy || clerkUserId || null
-
-//     console.log("resolvedCreatedBy (query or req.auth.userId)", resolvedCreatedBy);
-
-//     if (!resolvedCreatedBy && !req.query.mobile) {
-//       return res.status(401).json({
-//         success: false,
-//         message: "Authentication required"
-//       })
-//     }
-
-//     const filter = {}
-//     if (resolvedCreatedBy) filter.createdBy = resolvedCreatedBy
-//     if (req.query.mobile) filter.mobile = req.query.mobile
-
-//     const appointments = await Appointment.find(filter).sort({ date: 1, time: 1 }).lean()
-//     return res.json({ success: true, appointments })
-
-//   } catch (error) {
-//     console.log("GetAppointmentByPatient Error:", error);
-//     return res.status(500).json({
-//       success: false,
-//       message: "Server Error"
-//     })
-//   }
-// }
-
-// appointmentController.js
 
 export const getAppointmentByPatient = async (req, res) => {
   try {

@@ -481,28 +481,6 @@ export const getServiceAppointmentStats = async (req, res) => {
   }
 }
 
-// to get appointment for the patient 
-// export const getServiceAppointmentsByPatient = async (req, res) => {
-//   try {
-//     const clerkUserId = resolveClerkUserId(req)
-//     const {createdBy, mobile} = req.body
-//     const resolvedCreatedBy = createdBy || clerkUserId || null
-//     if (!resolvedCreatedBy && !mobile) return res.json({
-//       success: true,
-//       data: []
-//     })
-
-//     const filter = {}
-//     if (resolvedCreatedBy) filter.createdBy = resolvedCreatedBy
-//     if (mobile) filter.mobile = mobile
-
-//     const list = await ServiceAppointment.find(filter).sort({createdAt: -1}).lean()
-//   } catch (error) {
-//     console.error("getServiceAppointmentsByPatient error:", error);
-//     return res.status(500).json({ success: false, message: "Server error" });
-//   }
-// }
-
 export const getServiceAppointmentsByPatient = async (req, res) => {
   try {
     const clerkUserId = resolveClerkUserId(req);
