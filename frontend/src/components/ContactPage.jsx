@@ -120,7 +120,9 @@ const ContactPage = () => {
       form.department || "N/A"
     }\nService: ${form.service || "N/A"}\nMessage: ${form.message}`;
 
-    const url = `https://wa.me/8299431275?text=${encodeURIComponent(text)}`;
+    const WA_NO = import.meta.env.VITE_WA_NO
+
+    const url = `https://wa.me/${WA_NO}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
 
     setForm(initial);
