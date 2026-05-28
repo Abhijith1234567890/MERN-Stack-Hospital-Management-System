@@ -13,8 +13,8 @@ const app = express()
 const port = 4000
 
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5174"
+  "https://medicare-frontend-8lr1.onrender.com",
+  "https://medicare-admin-yopx.onrender.com"
 ]
 
 app.use(cors(
