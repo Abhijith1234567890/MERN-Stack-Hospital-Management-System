@@ -11,11 +11,11 @@ import {
   Stethoscope,
 } from "lucide-react";
 import {
-  FaFacebook,
   FaTwitter,
   FaInstagram,
   FaLinkedin,
   FaYoutube,
+  FaGithub,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -39,34 +39,16 @@ const Footer = () => {
 
   const socialLinks = [
     {
-      Icon: FaFacebook,
-      color: footerStyles.facebookColor,
-      name: "Facebook",
-      href: "https://www.facebook.com/people/Hexagon-Digital-Services/61567156598660/",
-    },
-    {
-      Icon: FaTwitter,
-      color: footerStyles.twitterColor,
-      name: "Twitter",
-      href: "https://www.linkedin.com/company/hexagondigtial-services/",
-    },
-    {
-      Icon: FaInstagram,
-      color: footerStyles.instagramColor,
-      name: "Instagram",
-      href: "http://instagram.com/hexagondigitalservices?igsh=MWp2NG1oNTlibWVnZA%3D%3D",
+      Icon: FaGithub,
+      color: footerStyles.gitHubColor,
+      name: "GitHub",
+      href: "https://github.com/Abhijith1234567890",
     },
     {
       Icon: FaLinkedin,
       color: footerStyles.linkedinColor,
       name: "LinkedIn",
-      href: "https://www.linkedin.com/company/hexagondigtial-services/",
-    },
-    {
-      Icon: FaYoutube,
-      color: footerStyles.youtubeColor,
-      name: "YouTube",
-      href: "https://youtube.com/@hexagondigitalservices?si=lxEFYNCP42t6AoDJ",
+      href: "https://www.linkedin.com/in/abhijith-p-p2001/",
     },
   ];
 
@@ -159,7 +141,7 @@ const Footer = () => {
             <h3 className={footerStyles.sectionTitle}>Our Services</h3>
             <ul className={footerStyles.linksList}>
               {services.map((service, index) => (
-                <li key={service.name}>
+                <li key={service.name || index}>
                   <a href={service.href} className={footerStyles.serviceLink}>
                     <div className={footerStyles.serviceIcon}></div>
                     <span>{service.name}</span>
@@ -168,66 +150,28 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          {/* Newsletter & Social */}
-          <div className={footerStyles.newsletterSection}>
-            <h3 className={footerStyles.newsletterTitle}>Stay Connected</h3>
-            <p className={footerStyles.newsletterDescription}>
-              Subscribe for health tips, medical updates, and wellness insights
-              delivered to your inbox.
-            </p>
-
-            {/* Newsletter form */}
-            <div className={footerStyles.newsletterForm}>
-              <div className={footerStyles.mobileNewsletterContainer}>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className={footerStyles.emailInput}
-                />
-                <button className={footerStyles.mobileSubscribeButton}>
-                  <Send className={footerStyles.mobileButtonIcon} />
-                  Subscribe
-                </button>
-              </div>
-
-              {/* Desktop newsletter */}
-              <div className={footerStyles.desktopNewsletterContainer}>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className={footerStyles.desktopEmailInput}
-                />
-                <button className={footerStyles.desktopSubscribeButton}>
-                  <Send className={footerStyles.desktopButtonIcon} />
-                  <span className={footerStyles.desktopButtonText}>
-                    Subscribe
-                  </span>
-                </button>
-              </div>
-
-              {/* Social icons */}
-              <div className={footerStyles.socialContainer}>
-                {socialLinks.map(({ Icon, color, name, href }, index) => (
-                  <a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={footerStyles.socialLink}
-                    style={{ animationDelay: `${index * 120}ms` }}
-                  >
-                    <div className={footerStyles.socialIconBackground} />
-                    <Icon className={`${footerStyles.socialIcon} ${color}`} />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
-        
+
         <div className={footerStyles.bottomSection}>
           <div className={footerStyles.copyright}>
             <span>&copy; {currentYear} MediCare Healthcare.</span>
+          </div>
+
+          {/* Social icons */}
+          <div className={footerStyles.socialContainer}>
+            {socialLinks.map(({ Icon, color, name, href }, index) => (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={footerStyles.socialLink}
+                style={{ animationDelay: `${index * 120}ms` }}
+              >
+                <div className={footerStyles.socialIconBackground} />
+                <Icon className={`${footerStyles.socialIcon} ${color}`} />
+              </a>
+            ))}
           </div>
 
           <div className={footerStyles.designerText}>

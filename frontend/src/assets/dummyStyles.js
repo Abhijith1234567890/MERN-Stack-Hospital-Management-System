@@ -442,7 +442,7 @@ export const footerStyles = {
   socialIcon: "w-10 h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 p-2 text-emerald-700 cursor-pointer transform hover:scale-110 hover:rotate-6 transition-all duration-300 relative z-10 bg-white rounded-2xl shadow-lg border-2 border-emerald-100",
   
   // Social icon colors
-  facebookColor: "hover:text-blue-600",
+  gitHubColor: "hover:text-black",
   twitterColor: "hover:text-blue-400",
   instagramColor: "hover:text-pink-600",
   linkedinColor: "hover:text-blue-700",
