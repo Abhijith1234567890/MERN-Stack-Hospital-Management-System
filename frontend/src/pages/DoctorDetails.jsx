@@ -154,7 +154,7 @@ export default function DoctorDetail() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`${API_BASE}/api/doctors/${id}`);
+        const res = await fetch(`${API_BASE}/doctors/${id}`);
         if (!res.ok) {
           const body = await res.json().catch(() => ({}));
           throw new Error(
@@ -291,7 +291,7 @@ export default function DoctorDetail() {
         throw new Error("Failed to obtain authentication token.");
       }
 
-      const res = await fetch(`${API_BASE}/api/appointments`, {
+      const res = await fetch(`${API_BASE}/appointments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

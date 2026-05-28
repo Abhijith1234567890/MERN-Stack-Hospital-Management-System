@@ -65,7 +65,7 @@ export default function ServiceDetail() {
     const controller = new AbortController();
 
     const endpoints = [
-      `${DEFAULT_HOST}/api/services/${encodeURIComponent(id)}`,
+      `${DEFAULT_HOST}/services/${encodeURIComponent(id)}`,
     ];
 
     async function tryFetch() {
@@ -336,7 +336,7 @@ export default function ServiceDetail() {
         return;
       }
 
-      const res = await fetch(`${DEFAULT_HOST}/api/service-appointments`, {
+      const res = await fetch(`${DEFAULT_HOST}/service-appointments`, {
         method: "POST",
         headers,
         body: JSON.stringify(payload),

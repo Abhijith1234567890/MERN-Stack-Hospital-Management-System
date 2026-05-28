@@ -92,7 +92,7 @@ const AddService = ({ serviceId }) => {
     async function loadService() {
       if (!serviceId) return;
       try {
-        const res = await fetch(`${API_BASE}/api/services/${serviceId}`);
+        const res = await fetch(`${API_BASE}/services/${serviceId}`);
         if (!res.ok) {
           const txt = await res.text().catch(() => "");
           console.warn("Failed to fetch service:", res.status, txt);
@@ -294,8 +294,8 @@ const AddService = ({ serviceId }) => {
       }
 
       const url = serviceId
-        ? `${API_BASE}/api/services/${serviceId}`
-        : `${API_BASE}/api/services`;
+        ? `${API_BASE}/services/${serviceId}`
+        : `${API_BASE}/services`;
       const method = serviceId ? "PUT" : "POST";
 
       const res = await fetch(url, { method, body: fd });

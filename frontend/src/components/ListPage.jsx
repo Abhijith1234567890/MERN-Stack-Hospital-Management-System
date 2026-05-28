@@ -313,7 +313,7 @@ const ListPage = () => {
     setLoading(true);
     setError(null);
     try {
-      const url = `${API_BASE}/api/appointments/doctor/${encodeURIComponent(
+      const url = `${API_BASE}/appointments/doctor/${encodeURIComponent(
         doctorId,
       )}`;
 
@@ -359,7 +359,7 @@ const ListPage = () => {
     );
 
     try {
-      const res = await fetch(`${API_BASE}/api/appointments/${id}`, {
+      const res = await fetch(`${API_BASE}/appointments/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: backendStatus }),
@@ -409,7 +409,7 @@ const ListPage = () => {
     );
 
     try {
-      const res = await fetch(`${API_BASE}/api/appointments/${id}`, {
+      const res = await fetch(`${API_BASE}/appointments/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ date: newDate, time: time12 }),

@@ -34,7 +34,7 @@ const LoginPage = () => {
     setBusy(true);
 
     try {
-      const res = await fetch(`${API_BASE}/api/doctors/login`, {
+      const res = await fetch(`${API_BASE}/doctors/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

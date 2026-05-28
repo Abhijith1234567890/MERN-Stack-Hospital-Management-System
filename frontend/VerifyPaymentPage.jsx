@@ -28,7 +28,7 @@ const VerifyPaymentPage = () => {
       }
 
       try {
-        const res = await axios.get(`${API_BASE}/api/appointment/confirm`, {
+        const res = await axios.get(`${API_BASE}/appointment/confirm`, {
           params: { session_id: sessionId },
           timeout: 15000,
         });

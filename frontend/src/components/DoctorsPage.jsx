@@ -27,7 +27,7 @@ const DoctorsPage = () => {
       setLoading(true);
       setError("");
       try {
-        const res = await fetch(`${API_BASE}/api/doctors`);
+        const res = await fetch(`${API_BASE}/doctors`);
         const json = await res.json().catch(() => null);
 
         if (!res.ok) {
@@ -108,7 +108,7 @@ const DoctorsPage = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`${API_BASE}/api/doctors`);
+      const res = await fetch(`${API_BASE}/doctors`);
       const json = await res.json().catch(() => null);
       if (!res.ok) {
         setError((json && json.message) || `Failed to load (${res.status})`);

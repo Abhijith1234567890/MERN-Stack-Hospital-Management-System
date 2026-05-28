@@ -109,7 +109,7 @@ const ListPage = () => {
   async function fetchDoctors() {
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/api/doctors`);
+      const res = await fetch(`${API_BASE}/doctors`);
       const body = await res.json().catch(() => null);
 
       if (res.ok && body && body.success) {
@@ -182,7 +182,7 @@ const ListPage = () => {
     if (!ok) return;
 
     try {
-      const res = await fetch(`${API_BASE}/api/doctors/${id}`, {
+      const res = await fetch(`${API_BASE}/doctors/${id}`, {
         method: "DELETE",
       });
       const body = await res.json().catch(() => null);

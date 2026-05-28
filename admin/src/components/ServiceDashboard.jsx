@@ -94,7 +94,7 @@ const ServiceDashboard = ({ services: servicesProp = null }) => {
         setError(null);
       }
 
-      const url = `${API_BASE}/api/service-appointments/stats/summary`;
+      const url = `${API_BASE}/service-appointments/stats/summary`;
       const res = await fetch(url, buildFetchOptions());
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));

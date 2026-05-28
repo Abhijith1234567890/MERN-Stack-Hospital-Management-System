@@ -115,7 +115,7 @@ const ServicePage = ({ previewCount = 9999 }) => {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`${API_BASE}/api/services`);
+      const res = await fetch(`${API_BASE}/services`);
       const json = await res.json().catch(() => null);
 
       if (!res.ok) {

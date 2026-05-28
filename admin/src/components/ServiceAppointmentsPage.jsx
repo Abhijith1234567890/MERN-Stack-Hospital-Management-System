@@ -274,7 +274,7 @@ const ServiceAppointmentsPage = () => {
     setLoading(true);
     setError(null);
     try {
-      const url = `${API_BASE}/api/service-appointments?limit=500`;
+      const url = `${API_BASE}/service-appointments?limit=500`;
       const res = await fetch(url);
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
@@ -372,7 +372,7 @@ const ServiceAppointmentsPage = () => {
     pushToast("Updating status", `Appointment #${id} → ${newStatus}`);
 
     try {
-      const res = await fetch(`${API_BASE}/api/service-appointments/${id}`, {
+      const res = await fetch(`${API_BASE}/service-appointments/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
@@ -455,7 +455,7 @@ const ServiceAppointmentsPage = () => {
     );
 
     try {
-      const res = await fetch(`${API_BASE}/api/service-appointments/${id}`, {
+      const res = await fetch(`${API_BASE}/service-appointments/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -530,13 +530,10 @@ const ServiceAppointmentsPage = () => {
     pushToast("Canceling", `Appointment #${id} is being canceled`);
 
     try {
-      const res = await fetch(
-        `${API_BASE}/api/service-appointments/${id}/cancel`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-        },
-      );
+      const res = await fetch(`${API_BASE}/service-appointments/${id}/cancel`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         throw new Error(body?.message || `Cancel failed (${res.status})`);

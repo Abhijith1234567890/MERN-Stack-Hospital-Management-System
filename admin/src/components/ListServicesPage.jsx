@@ -109,7 +109,7 @@ export default function ListServicePage() {
 
   async function fetchServices() {
     try {
-      const res = await fetch(`${API_BASE}/api/services`);
+      const res = await fetch(`${API_BASE}/services`);
       const body = await res.json().catch(() => null);
       if (!res.ok) {
         console.error("Failed to fetch services", body);
@@ -301,7 +301,7 @@ export default function ListServicePage() {
     let latest = service;
     if (service.id) {
       try {
-        const res = await fetch(`${API_BASE}/api/services/${service.id}`);
+        const res = await fetch(`${API_BASE}/services/${service.id}`);
         const body = await res.json().catch(() => null);
         if (res.ok && body) {
           latest = body.data || body.service || body;
@@ -489,7 +489,7 @@ export default function ListServicePage() {
       }
 
       const id = editForm.id;
-      const res = await fetch(`${API_BASE}/api/services/${id}`, {
+      const res = await fetch(`${API_BASE}/services/${id}`, {
         method: "PUT",
         body: fd,
       });
@@ -541,7 +541,7 @@ export default function ListServicePage() {
     if (!window.confirm("Are you sure you want to remove this service?"))
       return;
     try {
-      const res = await fetch(`${API_BASE}/api/services/${id}`, {
+      const res = await fetch(`${API_BASE}/services/${id}`, {
         method: "DELETE",
       });
       const body = await res.json().catch(() => null);

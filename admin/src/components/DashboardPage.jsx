@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 const API_BASE = import.meta.env.VITE_API_URL;
-const PATIENT_COUNT_API = `${API_BASE}/api/appointments/patients/count`;
+const PATIENT_COUNT_API = `${API_BASE}/appointments/patients/count`;
 
 // Helper function
 // it will return a finite number
@@ -143,7 +143,7 @@ const DashboardPage = () => {
       setLoading(true);
       setError(null);
       try {
-        const url = `${API_BASE}/api/doctors?limit=200`;
+        const url = `${API_BASE}/doctors?limit=200`;
         const res = await fetch(url);
         if (!res.ok) {
           const body = await res.json().catch(() => ({}));
@@ -480,7 +480,6 @@ function StatCard({ icon, label, value }) {
 }
 
 function MobileDoctorCard({ d }) {
-
   return (
     <div className={s.mobileDoctorCard}>
       <div className={s.mobileDoctorHeader}>

@@ -30,7 +30,7 @@ const VerifyServicePaymentPage = () => {
 
       try {
         const res = await axios.get(
-          `${API_BASE}/api/service-appointments/confirm`,
+          `${API_BASE}/service-appointments/confirm`,
           {
             params: { session_id: sessionId },
             timeout: 15000,

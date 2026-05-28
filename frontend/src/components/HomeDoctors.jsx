@@ -17,7 +17,7 @@ const HomeDoctors = ({ previewCount = 8 }) => {
       setLoading(true);
       setError("");
       try {
-        const res = await fetch(`${API_BASE}/api/doctors`);
+        const res = await fetch(`${API_BASE}/doctors`);
         const json = await res.json().catch(() => null);
 
         if (!res.ok) {
@@ -94,7 +94,7 @@ const HomeDoctors = ({ previewCount = 8 }) => {
                 setError("");
                 (async () => {
                   try {
-                    const res = await fetch(`${API_BASE}/api/doctors`);
+                    const res = await fetch(`${API_BASE}/doctors`);
                     const json = await res.json().catch(() => null);
                     const items = (json && (json.data || json)) || [];
                     const normalized = (Array.isArray(items) ? items : []).map(

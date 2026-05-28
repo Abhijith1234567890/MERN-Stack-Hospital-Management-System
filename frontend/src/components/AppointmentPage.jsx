@@ -179,7 +179,7 @@ const AppointmentPage = () => {
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
     try {
-      const resp = await API.get(`${API_BASE}/api/appointments/me`, {
+      const resp = await API.get(`${API_BASE}/appointments/me`, {
         headers,
       });
 
@@ -206,7 +206,7 @@ const AppointmentPage = () => {
       if (user?.id) {
         try {
           const debugResp = await API.get(
-            `${API_BASE}/api/appointments/me?createdBy=${user.id}`,
+            `${API_BASE}/appointments/me?createdBy=${user.id}`,
             { headers },
           );
 
@@ -263,7 +263,7 @@ const AppointmentPage = () => {
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
     try {
-      const resp = await API.get(`${API_BASE}/api/service-appointments/me`, {
+      const resp = await API.get(`${API_BASE}/service-appointments/me`, {
         headers,
       });
 
@@ -282,7 +282,7 @@ const AppointmentPage = () => {
       if (user?.id) {
         try {
           const debugResp = await API.get(
-            `${API_BASE}/api/service-appointments/me?createdBy=${user.id}`,
+            `${API_BASE}/service-appointments/me?createdBy=${user.id}`,
             { headers },
           );
 

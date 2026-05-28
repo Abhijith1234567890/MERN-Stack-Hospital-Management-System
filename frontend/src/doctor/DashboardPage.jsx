@@ -156,7 +156,7 @@ export default function DashboardPage({ apiBase }) {
     setLoading(true);
     setError(null);
     try {
-      const basePath = `${API}/api/appointments/doctor/${encodeURIComponent(
+      const basePath = `${API}/appointments/doctor/${encodeURIComponent(
         doctorId,
       )}`;
       const url = `${basePath}`;
@@ -224,7 +224,7 @@ export default function DashboardPage({ apiBase }) {
     );
 
     try {
-      const res = await fetch(`${API}/api/appointments/${id}`, {
+      const res = await fetch(`${API}/appointments/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: backendStatus }),
@@ -278,7 +278,7 @@ export default function DashboardPage({ apiBase }) {
     );
 
     try {
-      const res = await fetch(`${API}/api/appointments/${id}`, {
+      const res = await fetch(`${API}/appointments/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ date: newDate, time: time12 }),
