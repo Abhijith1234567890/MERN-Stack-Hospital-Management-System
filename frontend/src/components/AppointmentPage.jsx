@@ -184,7 +184,9 @@ const AppointmentPage = () => {
     console.log("Outgoing headers for /api/appointments/me:", headers);
 
     try {
-      const resp = await API.get("/api/appointments/me", { headers });
+      const resp = await API.get(`${API_BASE}/api/appointments/me`, {
+        headers,
+      });
       console.log("Response from /api/appointments/me:", resp?.data);
 
       const fetched =
@@ -211,9 +213,10 @@ const AppointmentPage = () => {
         try {
           console.log("Attempting debug request with ?createdBy=", user.id);
           const debugResp = await API.get(
-            `/api/appointments/me?createdBy=${user.id}`,
+            `${API_BASE}/api/appointments/me?createdBy=${user.id}`,
             { headers },
           );
+
           console.log("Debug fallback response:", debugResp?.data);
 
           const fetched =
@@ -270,7 +273,9 @@ const AppointmentPage = () => {
     console.log("Outgoing headers for /api/service-appointments/me:", headers);
 
     try {
-      const resp = await API.get("/api/service-appointments/me", { headers });
+      const resp = await API.get(`${API_BASE}/api/service-appointments/me`, {
+        headers,
+      });
       console.log("Response from /api/service-appointments/me:", resp?.data);
 
       const fetched =
@@ -290,9 +295,10 @@ const AppointmentPage = () => {
         try {
           console.log("Attempting debug request with ?createdBy=", user.id);
           const debugResp = await API.get(
-            `/api/service-appointments/me?createdBy=${user.id}`,
+            `${API_BASE}/api/service-appointments/me?createdBy=${user.id}`,
             { headers },
           );
+
           console.log("Debug fallback response (services):", debugResp?.data);
 
           const fetched =

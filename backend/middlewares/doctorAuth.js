@@ -7,7 +7,7 @@ export default async function doctorAuth(req, res, next) {
   const authHeader = req.headers.authorization
 
   // Check token
-  if (!authHeader || !authHeader.startsWith("Bearer")) {
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(401).json({
       success: false,
       message: "Doctor not authorized, token missing."

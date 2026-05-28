@@ -70,7 +70,7 @@ export const getAppointments = async (req, res) => {
     const total = await Appointment.countDocuments(filter)
     return res.json({
       success: true,
-      appointment: items,
+      appointments: items,
       meta: { page, limit, total, count: items.length }
     })
 
@@ -84,19 +84,47 @@ export const getAppointments = async (req, res) => {
 }
 
 // to getAppointment By Patient
+// export const getAppointmentByPatient = async (req, res) => {
+//   try {
+//     const queryCreatedBy = req.query.createdBy || null
+//     const clerkUserId = req.auth?.userId || null
+//     const resolvedCreatedBy = queryCreatedBy || clerkUserId || null
+
+//     console.log("resolvedCreatedBy (query or req.auth.userId)", resolvedCreatedBy);
+
+//     if (!resolvedCreatedBy && !req.query.mobile) {
+//       return res.status(401).json({
+//         success: false,
+//         message: "Authentication required"
+//       })
+//     }
+
+//     const filter = {}
+//     if (resolvedCreatedBy) filter.createdBy = resolvedCreatedBy
+//     if (req.query.mobile) filter.mobile = req.query.mobile
+
+//     const appointments = await Appointment.find(filter).sort({ date: 1, time: 1 }).lean()
+//     return res.json({ success: true, appointments })
+
+//   } catch (error) {
+//     console.log("GetAppointmentByPatient Error:", error);
+//     return res.status(500).json({
+//       success: false,
+//       message: "Server Error"
+//     })
+//   }
+// }
+
+// appointmentController.js
+
 export const getAppointmentByPatient = async (req, res) => {
   try {
     const queryCreatedBy = req.query.createdBy || null
-    const clerkUserId = req.auth?.userId || null
+    const { userId: clerkUserId } = getAuth(req)          
     const resolvedCreatedBy = queryCreatedBy || clerkUserId || null
 
-    console.log("resolvedCreatedBy (query or req.auth.userId)", resolvedCreatedBy);
-
     if (!resolvedCreatedBy && !req.query.mobile) {
-      return res.status(401).json({
-        success: false,
-        message: "Authentication required"
-      })
+      return res.status(401).json({ success: false, message: "Authentication required" })
     }
 
     const filter = {}
@@ -107,11 +135,8 @@ export const getAppointmentByPatient = async (req, res) => {
     return res.json({ success: true, appointments })
 
   } catch (error) {
-    console.log("GetAppointmentByPatient Error:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Server Error"
-    })
+    console.error("GetAppointmentByPatient Error:", error)
+    return res.status(500).json({ success: false, message: "Server Error" })
   }
 }
 
@@ -164,7 +189,7 @@ export const createAppointment = async (req, res) => {
       doctorId,
       createdBy: clerkUserId,
       date: String(date),
-      time: Stripe(time),
+      time: String(time),
       status: { $ne: "Canceled" }
     }).lean()
 
@@ -357,7 +382,7 @@ export const confirmPayment = async (req, res) => {
     }
 
     if (session.payment_status !== "paid") {
-      return res.json(400).json({
+      return res.status(400).json({
         success: false,
         message: "Payment not completed"
       })
@@ -549,7 +574,7 @@ export const getAppointmentByDoctor = async (req, res) => {
 
     return res.json({
       success: true,
-      appointment: items,
+      appointments: items,
       meta: { page, limit, total, count: items.length }
     })
   } catch (error) {

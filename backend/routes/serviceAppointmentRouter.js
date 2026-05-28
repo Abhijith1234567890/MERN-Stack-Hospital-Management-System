@@ -6,7 +6,7 @@ import { cancelServiceAppointment, confirmServicePayment, createServiceAppointme
 const serviceAppointmentRouter = express.Router()
 
 serviceAppointmentRouter.get("/", getServiceAppointments)
-serviceAppointmentRouter.get("/confiem", confirmServicePayment)
+serviceAppointmentRouter.get("/confirm", confirmServicePayment)
 serviceAppointmentRouter.get("/stats/summary", getServiceAppointmentStats)
 
 serviceAppointmentRouter.post("/", clerkMiddleware(), requireAuth(), createServiceAppointment)
