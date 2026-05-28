@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const API_BASE = "http://localhost:4000";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const VerifyPaymentPage = () => {
   const location = useLocation();
@@ -48,11 +48,11 @@ const VerifyPaymentPage = () => {
     verifyPayment();
 
     return () => {
-      cancelled = true
-    }
+      cancelled = true;
+    };
   }, [location, navigate]);
 
-  return null
+  return null;
 };
 
 export default VerifyPaymentPage;

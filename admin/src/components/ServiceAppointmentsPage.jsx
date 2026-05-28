@@ -1,8 +1,18 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { serviceAppointmentsStyles } from "../assets/dummyStyles";
-import { CheckCircle, Loader2, SearchIcon, XCircle, User, Phone, BadgeIndianRupee, Calendar, Clock } from "lucide-react";
+import {
+  CheckCircle,
+  Loader2,
+  SearchIcon,
+  XCircle,
+  User,
+  Phone,
+  BadgeIndianRupee,
+  Calendar,
+  Clock,
+} from "lucide-react";
 
-const API_BASE = "http://localhost:4000";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 // helper function
 function formatTwo(n) {
