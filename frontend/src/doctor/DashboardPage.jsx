@@ -140,7 +140,7 @@ function normalizeAppointment(a) {
   };
 }
 
-export default function DashboardPage({ apiBase }) {
+export default function DashboardPage() {
   const params = useParams();
   const location = useLocation();
 
@@ -148,7 +148,7 @@ export default function DashboardPage({ apiBase }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   location.search;
-  const API = apiBase || API_BASE;
+  const API = API_BASE;
 
   const doctorId = params.id;
 

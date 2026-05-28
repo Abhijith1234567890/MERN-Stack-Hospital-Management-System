@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Edit2,
   Save,
@@ -20,7 +20,9 @@ import {
   AlertCircle,
   BadgeIndianRupee,
 } from "lucide-react";
-import { editProfilePageStyles, iconSize } from "../assets/dummyStyles";
+import { editProfilePageStyles } from "../assets/dummyStyles";
+
+const API_BASE = `${import.meta.env.VITE_API_URL}/doctors`;
 
 const STORAGE_KEY = "doctorToken_v1";
 
@@ -54,10 +56,8 @@ function dedupeAndSortSchedule(schedule = {}) {
   return out;
 }
 
-export default function EditProfilePage({ apiBase }) {
+export default function EditProfilePage() {
   const { id } = useParams();
-  const navigate = useNavigate();
-  const API_BASE = `${API_BASE}/doctors`;
 
   const [doc, setDoc] = useState(null);
   const [editing, setEditing] = useState(false);
@@ -69,6 +69,16 @@ export default function EditProfilePage({ apiBase }) {
 
   const styles = editProfilePageStyles;
 
+  const addToast = (text, type = "success") => {
+    const idt = Date.now() + Math.random();
+    const t = { id: idt, text, type };
+    setToasts((prev) => [t, ...prev.slice(0, 2)]);
+    setTimeout(
+      () => setToasts((prev) => prev.filter((it) => it.id !== idt)),
+      3000,
+    );
+  };
+
   useEffect(() => {
     let cancelled = false;
     async function fetchDoctor() {
@@ -79,8 +89,7 @@ export default function EditProfilePage({ apiBase }) {
         if (!res.ok) throw new Error(json?.message || "Failed to fetch doctor");
         const d = json.data || json || {};
         d.schedule = dedupeAndSortSchedule(d.schedule || {});
-        d.imageUrl =
-          d.imageUrl || d.image || d.imageUrl === null ? d.imageUrl : d.image;
+        d.imageUrl = d.imageUrl ?? d.image ?? null;
         if (!cancelled) {
           setDoc(d);
           setImagePreview(d.imageUrl || "");
@@ -100,16 +109,6 @@ export default function EditProfilePage({ apiBase }) {
         URL.revokeObjectURL(imagePreview);
     };
   }, [id]);
-
-  const addToast = (text, type = "success") => {
-    const idt = Date.now() + Math.random();
-    const t = { id: idt, text, type };
-    setToasts((prev) => [t, ...prev.slice(0, 2)]);
-    setTimeout(
-      () => setToasts((prev) => prev.filter((it) => it.id !== idt)),
-      3000,
-    );
-  };
 
   const addDate = (dateStr) => {
     if (!dateStr) return;
